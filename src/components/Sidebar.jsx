@@ -9,7 +9,7 @@ function Sidebar() {
     return [
       "block rounded-lg px-3 py-2 text-sm font-semibold transition",
       isActive
-        ? "bg-slate-900 text-white"
+        ? "bg-transparent text-[#4d9843]"
         : "text-slate-700 hover:bg-slate-900/5 hover:text-slate-900",
     ].join(" ");
   };
