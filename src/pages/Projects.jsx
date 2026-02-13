@@ -672,6 +672,37 @@ function Projects() {
                         </div>
                       </div>
                     </div>
+
+                    <div className="flex items-center justify-between gap-4 border-t border-slate-100 px-10 py-8">
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-700"
+                      >
+                        Delete Project
+                        <span className="text-slate-400" aria-hidden="true">
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            className="h-5 w-5"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 7h16" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10 11v7" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M14 11v7" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 7l1 14h10l1-14" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 7V4h6v3" />
+                          </svg>
+                        </span>
+                      </button>
+
+                      <button
+                        type="button"
+                        className="rounded-full bg-[#2c6480] px-10 py-3 text-sm font-semibold text-white"
+                      >
+                        Save Changes
+                      </button>
+                    </div>
                   </div>
                 </aside>
               </div>
