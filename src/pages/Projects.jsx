@@ -52,7 +52,12 @@ function Projects() {
   const {
     categories,
     error: categoriesError,
-  } = useCategoriesData(true);
+    loading: categoriesLoading,
+    fetchCategories,
+    createCategory,
+  } = useCategoriesData(false);
+
+  const didSeedCategoriesRef = useRef(false);
 
   const PROJECT_IMAGE_URL = "/guesthouse.jpg";
 
@@ -65,6 +70,41 @@ function Projects() {
     if (!firstId) return;
     setNewDraft((prev) => ({ ...prev, category_id: String(firstId) }));
   }, [categories, newDraft.category_id]);
+
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
+
+  useEffect(() => {
+    if (didSeedCategoriesRef.current) return;
+    if (categoriesLoading) return;
+    if (categoriesError) return;
+
+    const desired = ["Residential", "Commercial", "Industrial"];
+    const existing = new Set(
+      (categories ?? [])
+        .map((c) => (c?.name ?? "").trim().toLowerCase())
+        .filter(Boolean)
+    );
+    const missing = desired.filter((name) => !existing.has(name.toLowerCase()));
+
+    if (missing.length === 0) {
+      didSeedCategoriesRef.current = true;
+      return;
+    }
+
+    const token = localStorage.getItem("access_token");
+    if (!token) return;
+
+    didSeedCategoriesRef.current = true;
+
+    (async () => {
+      for (const name of missing) {
+        await createCategory({ name, description: null });
+      }
+      await fetchCategories();
+    })();
+  }, [categories, categoriesLoading, categoriesError, createCategory, fetchCategories]);
 
   const categoryTabs = useMemo(() => {
     const names = (categories ?? [])
@@ -419,9 +459,6 @@ function Projects() {
               >
                 <span className="flex-1 py-4 text-center text-base font-semibold text-white">
                   {actionLoading ? "Uploading..." : "Upload Project"}
-                </span>
-                <span className="grid w-16 place-items-center bg-[#7ac943] text-2xl font-semibold text-[#2c6480]">
-                  ›
                 </span>
               </button>
             </div>

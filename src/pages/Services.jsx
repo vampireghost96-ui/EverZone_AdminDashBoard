@@ -300,11 +300,8 @@ function Services() {
                     >
                       <span className="flex w-full items-stretch overflow-hidden rounded-full bg-[#2c6480]">
                         <span className="flex-1 py-4 text-center text-base font-semibold text-white">
-                          {actionLoading ? "Uploading..." : "Upload Services"}
-                        </span>
-                        <span className="grid w-16 place-items-center bg-[#7ac943] text-2xl font-semibold text-[#2c6480]">
-                          ›
-                        </span>
+                          {actionLoading ? "Uploading..." : "Upload Service"}
+                        </span>                     
                       </span>
                     </button>
                   </div>

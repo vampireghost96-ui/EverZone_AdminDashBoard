@@ -31,9 +31,11 @@ function Navbar() {
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-6">
         <div className="flex items-center gap-8">
           <Link to="/Home" className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#4d9843] text-xs font-bold text-[#4d9843]">
-              EZ
-            </span>
+            <img
+              src="/everzone%20Logo.jpg"
+              alt="Ever Zone"
+              className="h-15 w-15 object-contain"
+            />
             <span className="text-base font-semibold text-slate-900">
               EverZone
             </span>
